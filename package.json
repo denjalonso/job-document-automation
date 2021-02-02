@@ -1,0 +1,28 @@
+{
+  "name": "job-document-automation",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">=8 <15"
+  },
+  "main": "document-from-template.js",
+  "scripts": {
+    "code-review": "node document-from-template.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denjalonso/job-document-automation.git"
+  },
+  "keywords": [],
+  "author": "Denis J. Alonso <denjalonso@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denjalonso/job-document-automation/issues"
+  },
+  "homepage": "https://github.com/denjalonso/job-document-automation#readme",
+  "dependencies": {
+    "@pdftron/pdfnet-node": "8.1.0",
+    "inquirer": "7.3.3",
+    "prettier": "2.2.1"
+  }
+}
