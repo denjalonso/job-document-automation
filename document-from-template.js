@@ -1,20 +1,23 @@
 const fs = require('fs')
-const inquirer = require("inquirer");
+const inquirer = require('inquirer')
+const {PDFNet} = require('@pdftron/pdfnet-node')
 
-const inputPdf = process.argv[2] // TODO: default file name
-if (!inputPdf) {
-    throw new Error('We need a pdf input template file')
+const documentTemplate = process.argv[2]
+const newDocumentPrefix = process.argv[3] || 'document_prefix_'
+if (!documentTemplate) {
+  throw new Error('We need a document input template file')
 }
 const prompt = inquirer
-  .prompt([{ name: "release", message: `What's the release version?` }])
-  .then(({ release }) => {
-    if(!release) {
-        throw new Error('No ')
+  .prompt([{name: 'release', message: `What's the release version?`}])
+  .then(async ({release}) => {
+    if (!release) {
+      throw new Error('Not generate document because none was provided')
     }
-    fs.copyFileSync(inputPdf, `ANEXOB-RevisionCodigo_${release}.docx`, fs.constants.COPYFILE_EXCL)
+    const newDoument = `${newDocumentPrefix}${release}.docx.pdf` // TODO extension
+    fs.copyFileSync(documentTemplate, newDoument, fs.constants.COPYFILE_EXCL)
+    await replaceData(newDoument)
+  })
 
-  });
-
-function replaceData() {
-
+async function replaceData(newDocument) {
+    console.log('Replace data ...')
 }
